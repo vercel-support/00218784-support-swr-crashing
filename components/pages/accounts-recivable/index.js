@@ -1,0 +1,1 @@
+export { AccountsRecivablePage } from './AccountsRecivablePage.jsx'

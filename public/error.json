@@ -1,0 +1,187 @@
+{
+  "statusCode": 404,
+  "message": "",
+  "details": {},
+  "name": "RequestError",
+  "stack": "Error\n    at new p (https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/8820-c392a8516fcb2234.js:1:679)\n    at https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/8820-c392a8516fcb2234.js:1:1896\n    at s (https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/main-68e6908ff817a736.js:1:96579)\n    at Generator.u._invoke (https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/main-68e6908ff817a736.js:1:96359)\n    at Generator.e.<computed> [as throw] (https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/main-68e6908ff817a736.js:1:96982)\n    at n (https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/pages/_app-1a436ad8ae3972b9.js:65:65055)\n    at c (https://taskility-c25f9461w-taskility.vercel.app/_next/static/chunks/pages/_app-1a436ad8ae3972b9.js:65:65288)"
+}
+
+curl -i -X POST \
+  https://graph.facebook.com/v16.0/111548365215813/messages \
+  -H 'Authorization: Bearer EAARrUnlEdVUBAAmcbR2FZBFop3orIGxlRIKW99de7zk7EtqEJW8QGizdzz696bO96xRij6CUbVPwibBx2ZAPVywZCLUEDIrtl6ZCm9mJ8xToQfvP8ZCXlKHWeZAHh92Vs7UAkSIVVZCyjv64auM8orqrxZAyReqwVHHGZAXCD7D2hptVSJEAzdaIZCHLzXHHnKOc18VboAae8MNHgRYv9nhSIi' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "messaging_product": "whatsapp",
+    "to": "525549363385",
+    "type": "template",
+    "template": {
+      "name": "shipment_status_notification_v1_0_0",
+      "language": {
+        "code": "es_MX"
+      }
+    },
+    "components": [
+      {
+        "type": "header",
+        "parameters": [
+          {
+            "type": "image",
+            "image": {
+              "link": "https://storage.googleapis.com/taskility-bucket-gcp/Logo%20A1A%20Logistics%20fondocolor.png"
+            }
+          }
+        ]
+      },
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "CAMEX"
+          },
+          {
+            "type": "text",
+            "text": "CMX121199"
+          },
+          {
+            "type": "text",
+            "text": "En tránsito"
+          },
+          {
+            "type": "text",
+            "text": "Saliendo del aeropuerto de Querétaro"
+          },
+          {
+            "type": "text",
+            "text": "Enrique Vargas"
+          },
+          {
+            "type": "text",
+            "text": "442123456"
+          },
+          {
+            "type": "text",
+            "text": "evargas@camex.com"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "sub_type": "url",
+        "index": "0",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "J$FpnYnP"
+          }
+        ]
+      }
+    ]
+  }'
+
+//Status update
+  curl -i -X POST \
+  https://graph.facebook.com/v16.0/111548365215813/messages \
+  -H 'Authorization: Bearer EAARrUnlEdVUBAAuw0IXaXszaiu9GY81iCmRVqOfmjR9YLLIHw5wY9e3eg8bR1WZCfzXSDz5ZCQXoJPtLdakfL9NCbzNuM6E5ZCwbGSY6KZCxTTHDlEtFxtAdYNzFIsCBZA6LUauCZBUAzIT89ZC2racYpygjtJKhUfhEFzgGo5MvcuD0qZCCXMaZCcwB5ut8oFISISjS8sGDYULKtPzQ1hcmj' \
+  -H 'Content-Type: application/json' \
+  -d '{"messaging_product": "whatsapp", "to": "525549363385", "type": "template", "template": {"name": "shipment_status_notification_v1_0_0", "language": {"code": "es_MX"}, "components": [{"type": "header","parameters": [{"type": "image","image": {"link": "https://storage.googleapis.com/taskility-bucket-gcp/Logo%20A1A%20Logistics%20fondocolor.png"}}]},{"type": "body","parameters": [{"type": "text","text": "CAMEX"},{"type": "text","text": "CMX121199"},{"type": "text","text": "En tránsito"},{"type": "text","text": "Saliendo del aeropuerto de Querétaro"},{"type": "text","text": "Enrique Vargas"},{"type": "text","text": "442123456"},{"type": "text","text": "evargas@camex.com"}]},{"type": "button","sub_type": "url","index": "0","parameters": [{"type": "text","text": "J$FpnYnP"}]}]}}'
+
+  curl -i -X POST \
+  https://graph.facebook.com/v16.0/111548365215813/messages \
+  -H 'Authorization: Bearer EAARrUnlEdVUBANree97OjRHh8ZCABZA9nej7HjOsMorTXgUkzKh2Rvd9yrmUR3bu9Rp7YhsuqfzLdUOafZB3Snt5IqzryFhhnqfgSizQotyndmGAjYkqKEmC6pH0962qTA8OOCELHiU3C4GGeB62OAwQeRaiqJ3j7uPM6TDGiAykAUyM3AoxOxWrofjBraKEiJQL51xCgZDZD' \
+  -H 'Content-Type: application/json' \
+  -d '{"messaging_product": "whatsapp", "to": "525549363385", "type": "template", "template": {"name": "shipment_status_notification_v1_0_0", "language": {"code": "es_MX"}, "components": [{"type": "header","parameters": [{"type": "image","image": {"link": "https://taskility-c25f9461w-taskility.vercel.app/logo_camex.jpeg"}}]},{"type": "body","parameters": [{"type": "text","text": "CAMEX"},{"type": "text","text": "CMX121199"},{"type": "text","text": "En tránsito"},{"type": "text","text": "Saliendo del aeropuerto de Querétaro"},{"type": "text","text": "Enrique Vargas"},{"type": "text","text": "442123456"},{"type": "text","text": "evargas@camex.com"}]},{"type": "button","sub_type": "url","index": "0","parameters": [{"type": "text","text": "J$FpnYnP"}]}]}}'
+
+
+//Invitation
+  curl -i -X POST \
+  https://graph.facebook.com/v16.0/111548365215813/messages \
+  -H 'Authorization: Bearer EAARrUnlEdVUBAAuw0IXaXszaiu9GY81iCmRVqOfmjR9YLLIHw5wY9e3eg8bR1WZCfzXSDz5ZCQXoJPtLdakfL9NCbzNuM6E5ZCwbGSY6KZCxTTHDlEtFxtAdYNzFIsCBZA6LUauCZBUAzIT89ZC2racYpygjtJKhUfhEFzgGo5MvcuD0qZCCXMaZCcwB5ut8oFISISjS8sGDYULKtPzQ1hcmj' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "messaging_product": "whatsapp", 
+    "to": "525549363385", 
+    "type": "template", 
+    "template": {
+      "name": "hub_invitation_text_only_v_1_0_1", 
+      "language": {
+        "code": "es_MX"
+        }, 
+      "components": [
+        {"type": "body",
+        "parameters": [
+          {"type": "text","text": "A1A Logistics"},
+          {"type": "text","text": "Enrique Vargas"},
+          {"type": "text","text": "Ball - NL - Qro"},
+          {"type": "text","text": "A1AL231109"}
+        ]},
+        {"type": "button",
+        "sub_type": "url",
+        "index": "0",
+        "parameters": [
+          {"type": "text","text": "J$FpnYnP"}
+          ]}
+        ]
+      }
+      }'
+
+  curl -i -X POST \
+  https://graph.facebook.com/v16.0/111548365215813/messages \
+  -H 'Authorization: Bearer EAARrUnlEdVUBAFqwBIrSjnL1KwCePzkdN8YIfmXBQdNPweJUM6Ql9X7M3DadxBp710ucfrvcPdlpqwWWF7HZAbTw3JtXiKDAeZAItIAixkynTnZB1MvHEr7z4KaIh3sdN7E1PkhtJt3n4LuDRQqZCjCDXmxxNO9cTSHmSKZA1smsJhZCd5Lt25pZCLZCIFqM3e5Su3yVvkTECdxr8zbNj7Hg' \
+  -H 'Content-Type: application/json' \
+  -d '{"messaging_product": "whatsapp", "to": "525549363385", "type": "template", "template": {"name": "status_text_only_v_1_0_0", "language": {"code": "en_US"}}, "components": [{"type": "body","parameters": [{"type": "text","text": "CAMEX"},{"type": "text","text": "CMX121199"},{"type": "text","text": "En tránsito"},{"type": "text","text": "Saliendo del aeropuerto de Querétaro"},{"type": "text","text": "Enrique Vargas"},{"type": "text","text": "442123456"},{"type": "text","text": "evargas@camex.com"}]},{"type": "button","sub_type": "url","index": "0","parameters": [{"type": "text","text": "J$FpnYnP"}]}]}'
+
+
+
+curl -X  POST \
+ 'https://graph.facebook.com/v16.0/FROM_PHONE_NUMBER_ID/messages' \
+ -H 'Authorization: Bearer ACCESS_TOKEN' \
+ -H 'Content-Type: application/json' \
+ -d '{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "PHONE_NUMBER",
+  "type": "template",
+  "template": {
+    "name": "TEMPLATE_NAME",
+    "language": {
+      "code": "LANGUAGE_AND_LOCALE_CODE"
+    },
+    "components": [
+      {
+        "type": "header",
+        "parameters": [
+          {
+            "type": "image",
+            "image": {
+              "link": "https://URL"
+            }
+          }
+        ]
+      },
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "TEXT-STRING"
+          },
+          {
+            "type": "currency",
+            "currency": {
+              "fallback_value": "VALUE",
+              "code": "USD",
+              "amount_1000": NUMBER
+            }
+          },
+          {
+            "type": "date_time",
+            "date_time": {
+              "fallback_value": "MONTH DAY, YEAR"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}'
