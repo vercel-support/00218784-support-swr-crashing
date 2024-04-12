@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb'
 import { getNewId } from '../helpers/server'
 
 
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb'
 
 const pkFactory = () => {}
 pkFactory.createPk = getNewId

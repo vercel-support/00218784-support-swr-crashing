@@ -1,5 +1,5 @@
-const { Translate } = require('@google-cloud/translate')
-const dialogflow = require('dialogflow').v2beta1
+import { Translate } from '@google-cloud/translate'
+import dialogflow from 'dialogflow/v2beta1'
 
 const projectId = process.env.DF_PROJECT_ID
 const keyPath = process.env.DF_SERVICE_ACCOUNT_PATH

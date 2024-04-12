@@ -1,5 +1,5 @@
 // import { encodeTextURL } from '../helpers/text'
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer'
 
 export const getExchangeRateFromDofMx = async (day, month, year) => {
   // const formattedDate = econdeTextURL(date)

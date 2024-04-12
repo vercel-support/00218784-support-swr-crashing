@@ -12,7 +12,7 @@ import { AppBody } from '../../layout/app-body'
 import { LoggedUserMainLayout } from '../../layout/logged-user-main-layout'
 import { Tabs, Tab, TabPanel } from '../../ui-elements/tabs'
 
-const { Document, Page } = require('react-pdf')
+import { Document, Page } from 'react-pdf'
 
 // pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 

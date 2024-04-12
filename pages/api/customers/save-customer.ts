@@ -4,7 +4,7 @@ import { methodFilter, checkUserToken, dbConnection, dbConnectionClose, errorHan
 import { DbService, User } from 'services/model'
 import { UpdateResult } from 'mongodb'
 
-const postmark = require('postmark')
+import postmark from 'postmark'
 
 const client = new postmark.ServerClient('34072dd1-b9cc-481d-9726-88af944744d0')
 

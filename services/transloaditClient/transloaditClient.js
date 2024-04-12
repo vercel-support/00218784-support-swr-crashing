@@ -4,7 +4,7 @@
 import { log } from '../logs/index'
 // 'services/logs/index.js'
 // import TransloaditClient from '../../node_modules/transloadit/src/Transloadit'
-const TransloaditClient = require('transloadit')
+import TransloaditClient from 'transloadit'
 
 const createAssembly = options => {
   const transloadit = new TransloaditClient({ authKey: process.env.TRANSLOADIT_KEY, authSecret: process.env.TRANSLOADIT_SECRET })

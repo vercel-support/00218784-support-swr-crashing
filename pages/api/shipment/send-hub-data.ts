@@ -1,16 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { composeRoute, RequestError } from 'services/api/helpers'
-import {
-  methodFilter,
-  checkUserToken,
-  dbConnection,
-  dbConnectionClose,
-  errorHandler,
-  loadUser,
-} from 'services/api/helpers/middlewares'
+import { methodFilter, checkUserToken, dbConnection, dbConnectionClose, errorHandler, loadUser } from 'services/api/helpers/middlewares'
 import { DbService, User } from 'services/model'
 
-const postmark = require('postmark')
+import postmark from 'postmark'
 
 const client = new postmark.ServerClient('34072dd1-b9cc-481d-9726-88af944744d0')
 

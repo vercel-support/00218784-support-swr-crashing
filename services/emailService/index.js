@@ -5,7 +5,7 @@ import { RequestError } from '../api/helpers'
 import { BoLHBenefits } from '../../components/pages/billOfLading/marketingMessages'
 
 
-const postmark = require('postmark')
+import postmark from 'postmark'
 
 
 export const createEmailService = ({ apiKey, fromEmail }) => ({
@@ -68,31 +68,31 @@ export const selectARandomBenefit = () => {
 }
 
 
-export const sendHubInvitation = ({emailClient, shipmentHub, loggedUser, adminUser, userToInvite }) => {
-    
-    const benefit = selectARandomBenefit()
-    const currentTime = new Date()
-    const templateModel = {
-      emailSubject: `${shipmentHub.folio} | ${shipmentHub.name}`,
-      receiverName: userToInvite?.name ? userToInvite.name : '',
-      BoLHName: shipmentHub.name,
-      BoLHLink: `https://app.taskility.com/shipment-hub/${shipmentHub._id}`,
-      BoLHFolio: shipmentHub.folio,
-      benefitTitle: benefit?.title,
-      benefitDescription: benefit?.description,
-      benefitLinkUrl: benefit?.linkUrl,
-      benefitLinkText: benefit?.linkText,
-      createUserLink: 'https://app.taskility.com/signup',
-      adminUserEmail: adminUser?.email,
-      adminUserName: `${adminUser?.name} ${adminUser?.lastName}`,
-      year: currentTime.getFullYear(),
-      headText: 'headText_Value',
-      linkText: 'linkText_Value',
-      userName: loggedUser.username
-    }
+export const sendHubInvitation = ({ emailClient, shipmentHub, loggedUser, adminUser, userToInvite }) => {
+
+  const benefit = selectARandomBenefit()
+  const currentTime = new Date()
+  const templateModel = {
+    emailSubject: `${shipmentHub.folio} | ${shipmentHub.name}`,
+    receiverName: userToInvite?.name ? userToInvite.name : '',
+    BoLHName: shipmentHub.name,
+    BoLHLink: `https://app.taskility.com/shipment-hub/${shipmentHub._id}`,
+    BoLHFolio: shipmentHub.folio,
+    benefitTitle: benefit?.title,
+    benefitDescription: benefit?.description,
+    benefitLinkUrl: benefit?.linkUrl,
+    benefitLinkText: benefit?.linkText,
+    createUserLink: 'https://app.taskility.com/signup',
+    adminUserEmail: adminUser?.email,
+    adminUserName: `${adminUser?.name} ${adminUser?.lastName}`,
+    year: currentTime.getFullYear(),
+    headText: 'headText_Value',
+    linkText: 'linkText_Value',
+    userName: loggedUser.username
+  }
 
 
-  if (!templateModel) return {error: RequestError(400, 'saveNewPlace.errors.noData')}
+  if (!templateModel) return { error: RequestError(400, 'saveNewPlace.errors.noData') }
   // console.log('templateModel in api:', templateModel, 'preferedLanguage', preferedLanguage, 'loggedUser in api', loggedUser, 'emailToSend', emailToSend)
 
 
@@ -104,5 +104,5 @@ export const sendHubInvitation = ({emailClient, shipmentHub, loggedUser, adminUs
   })
   // console.log('templateModel in api:', templateModel, 'preferedLanguage', preferedLanguage, 'loggedUser in api', loggedUser, 'emailToSend', emailToSend)
 
-  return {ok: true}
+  return { ok: true }
 }

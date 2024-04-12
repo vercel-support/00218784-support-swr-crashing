@@ -37,8 +37,7 @@ import {
   UserIdData,
 } from '../model'
 import { getNewId } from '../helpers/server'
-const  randomstring = require("randomstring");
-
+import randomstring from 'randomstring'
 
 export const appDbService = (db: Db): DbService => {
   const AttachedFiles = db.collection<AttachedFile>('attachedFiles')
@@ -1651,12 +1650,12 @@ export const appDbService = (db: Db): DbService => {
   const incrementCompanyShipmentCounter = async (companyId: any, increaseRate: number, addCounterToCompany: boolean) => {
     if (addCounterToCompany) {
       const result = await Companies.updateOne({ _id: companyId }, { $set: { nextShipmentNumber: 2 } })
-    // console.log({place: 'incrementCompanyShipmentHubCounter', result, companyId, increaseRate})
+      // console.log({place: 'incrementCompanyShipmentHubCounter', result, companyId, increaseRate})
     } else {
-    const result = await Companies.updateOne({ _id: companyId }, { $inc: { nextShipmentNumber: increaseRate } })
-    // console.log({place: 'incrementCompanyShipmentHubCounter', result, companyId, increaseRate})
-    if (result.acknowledged && result.matchedCount && result.modifiedCount)
-      console.log(`counter added ${result.modifiedCount} to nextShipmentNumber in ${result.upsertedId}`)
+      const result = await Companies.updateOne({ _id: companyId }, { $inc: { nextShipmentNumber: increaseRate } })
+      // console.log({place: 'incrementCompanyShipmentHubCounter', result, companyId, increaseRate})
+      if (result.acknowledged && result.matchedCount && result.modifiedCount)
+        console.log(`counter added ${result.modifiedCount} to nextShipmentNumber in ${result.upsertedId}`)
     }
   }
 
@@ -1852,7 +1851,7 @@ export const appDbService = (db: Db): DbService => {
     if (company) {
       console.log('saveNewShipment company: ', company)
       console.log('saveNewShipment templateFields: ', templateFields)
-      const nextShipmentCounter = company?.nextShipmentNumber ? company?.nextShipmentNumber?.toString() : "1"
+      const nextShipmentCounter = company?.nextShipmentNumber ? company?.nextShipmentNumber?.toString() : '1'
       console.log('user inside saveNewShipment', loggedUser)
       const folio =
         nextShipmentCounter!.length < 4
@@ -1883,27 +1882,27 @@ export const appDbService = (db: Db): DbService => {
 
       // const objectId = new ObjectId().toString()
 
-interface SharedUsers {
-  userId: string;
-  name: string;
-  lastName: string;
-  initials: string;
-  notify: boolean;
-  preferedLanguage: string;
-  writePermissions: string[];
-  viewPermissions: string[];
-  email: string;
-  mobile: string;
-  companyId: string;
-  companyName: string;
-  telegramAutenticationToken: string;
-  telegramChatId: string;
-  hubManager: boolean;
-}
+      interface SharedUsers {
+        userId: string
+        name: string
+        lastName: string
+        initials: string
+        notify: boolean
+        preferedLanguage: string
+        writePermissions: string[]
+        viewPermissions: string[]
+        email: string
+        mobile: string
+        companyId: string
+        companyName: string
+        telegramAutenticationToken: string
+        telegramChatId: string
+        hubManager: boolean
+      }
 
-let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers) => user.email === adminUser.email)
-  ? [...templateFields.share.users]
-  : [adminUser, ...templateFields?.share?.users];
+      let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers) => user.email === adminUser.email)
+        ? [...templateFields.share.users]
+        : [adminUser, ...templateFields?.share?.users]
 
       const shipmentAssambled = {
         // _id: objectId,
@@ -1932,23 +1931,21 @@ let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers
       if (acknowledged === true) {
         // await incrementCounterNumber('BoL Hubs', 1)
         // console.log({place: "saveNewShipmentHub increment nextShipmentHubNumber", companyId})
-        await incrementCompanyShipmentCounter(companyId, 1, nextShipmentCounter === "1")
+        await incrementCompanyShipmentCounter(companyId, 1, nextShipmentCounter === '1')
 
         // If the templatefields does not have stages create the first base stage
-        if (!templateFields?.stages?.length || !templateFields?.stages ) {
-
+        if (!templateFields?.stages?.length || !templateFields?.stages) {
           const folio = randomstring.generate(4).toUpperCase()
 
           const stage = {
-              shipmentId: shipmentId,
-              name: 'Initial Stage',
-              folio: folio,
-              type: 'land',
+            shipmentId: shipmentId,
+            name: 'Initial Stage',
+            folio: folio,
+            type: 'land',
           }
 
           const { acknowledged: acknowledgeStage, insertedId: stageId } = await Stages.insertOne(stage)
           console.log('Initial Stage', { acknowledgeStage, stageId })
-          
         }
         // Check if the template has stages.
         // Create each stage in the Stage collection
@@ -1975,20 +1972,18 @@ let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers
     return { ok: false, name: '', _id: '', error: 'Company not found. New Shipment not saved to DB' }
   }
 
-  const saveNewStage = async (shipmentId: any, stageData: any, folio: any,) => {
-      const  randomstring = require("randomstring");
-      const newFolio = folio || randomstring.generate(4).toUpperCase()
-    
-      const newStage = {
-        shipmentId,
-        folio: newFolio,
-        ...stageData,
-      }
-  
+  const saveNewStage = async (shipmentId: any, stageData: any, folio: any) => {
+    const newFolio = folio || randomstring.generate(4).toUpperCase()
 
-      const {acknowledged, insertedId} = await Stages.insertOne(newStage)
-      console.log('res', {acknowledged, insertedId})
-      return {acknowledged, insertedId}
+    const newStage = {
+      shipmentId,
+      folio: newFolio,
+      ...stageData,
+    }
+
+    const { acknowledged, insertedId } = await Stages.insertOne(newStage)
+    console.log('res', { acknowledged, insertedId })
+    return { acknowledged, insertedId }
   }
 
   const deleteStage = async (id: any) => {
@@ -1997,18 +1992,18 @@ let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers
   }
 
   // TODO: Review the type of name and folio variables.
-  const updateStage = async (name: any, folio: any, stageData:any) => {
+  const updateStage = async (name: any, folio: any, stageData: any) => {
     // console.log('stageData', stageData)
-    let response: UpdateResult;
+    let response: UpdateResult
 
-    console.log('stageData', stageData);
+    console.log('stageData', stageData)
 
-    if(stageData && stageData.stageId){
-      response = await Stages.updateOne({ _id: stageData.stageId }, [{ $set: {name: stageData.stage, type:stageData.type} }])
-      console.log('res1', stageData, folio, name);
-    }else{
-      response = await Stages.updateOne({ folio: folio }, [{ $set: {name: name} }])
-      console.log('res2', stageData, folio, name);
+    if (stageData && stageData.stageId) {
+      response = await Stages.updateOne({ _id: stageData.stageId }, [{ $set: { name: stageData.stage, type: stageData.type } }])
+      console.log('res1', stageData, folio, name)
+    } else {
+      response = await Stages.updateOne({ folio: folio }, [{ $set: { name: name } }])
+      console.log('res2', stageData, folio, name)
     }
     // eslint-disable-next-line prefer-const
 
@@ -2072,8 +2067,6 @@ let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers
       error: 'Action unknown',
     }
   }
-
-  
 
   const updateHubStatus = async (id: any, fields: any) => {
     // console.log('Reached updateBoLHField')
@@ -2727,15 +2720,12 @@ let users: SharedUsers[] = templateFields?.share?.users?.find((user: SharedUsers
   }
 
   const getMilestoneById = async (shipmentId: string) => {
-    const event = await Milestones.find({ 'shipmentId': shipmentId})
-    .sort({ date: -1 })
-    .toArray()
+    const event = await Milestones.find({ shipmentId: shipmentId }).sort({ date: -1 }).toArray()
     // console.log('event', event);
     // console.log('shipmentId', shipmentId);
-    
+
     return Promise.resolve({ event })
   }
-
 
   const copyBoLHubById = async (id: string) => {
     // Get the original Hub for copy
